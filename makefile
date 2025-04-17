@@ -1,4 +1,4 @@
-SOURCE = main.tex
+SOURCE = main.tex time_complexity.tex
 main.pdf: $(SOURCE)
 	pdflatex --shell-escape main
 	

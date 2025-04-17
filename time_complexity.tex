@@ -41,4 +41,15 @@
     \end{algorithmic}
  \end{algorithm}
 
- In the worst case each object of $Q_{star}$ will refer to a partial GSP in $Q_{starT_i}$ and each 
+ Let's suppose that $match$ operate in constant time.
+
+ In the worst case each object of each $tp \in Q_{star}$ will not match and thus will enter into the for loop.
+ This segment will result into a complexity $O(n_{Q_{sunion}} \times n_{tp_{ Q_{star}}})$, 
+ where $n_{Q_{sunion}}$ is the number of union statement in $Q_{sunions}$ and $n_{tp_{ Q_{star}}}$ the number of triple patterns
+ of $Q_{star}$.
+ For each of this stament the function will be called recursively.
+ The $q_{us} \in Q_{sunions}$ cannot have a UGP, this it will always be of the form $Q_s = Q_{sbody}$, thus in the worst case
+ the $tp$ will match and $O(tp) \in  S_{star}(Q_{starT_i})$ is true.
+ This result in a recursive call of the function a different $Q_{star} \in Q_{starT_i}$, resulting in a 
+ complexity for this fragment of $O((n_{Q_{sunion}} \times n_{tp_{ Q_{star}}})^2)$.
+ However
