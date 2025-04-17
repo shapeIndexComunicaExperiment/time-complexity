@@ -10,8 +10,8 @@
        \REQUIRE  $Q_{star}$, $Q_{starT_i}$, $Q_s = Q_{s\mathrm{body}} \cup Q_{s\mathrm{unions}}$ and $Eval_{star}$
        \ENSURE \TRUE $ $ or \FALSE $ $ whether the root of a graph star pattern $Q_{star}$ is contained in the shape.
  
-       \IF{$S_{star}(Q_{star}) \in Eval_{star}$}
-          \RETURN \TRUE
+       \IF{$M(S_{star}(Q_{star})) \in Eval_{star}$}
+          \RETURN $M(S_{star}(Q_{star}))$
        \ENDIF 
  
        \FORALL{$tp \in Q_{star}$} % O(n_star)
@@ -23,12 +23,14 @@
                 \ENDIF
              \ENDFOR
              \IF{\NOT $hasOnePath$}
+             \STATE $Eval_{star} \gets Eval_{star} \cup M(S_{star}(Q_{star})) \mapsto \mathrm{false}$
                 \RETURN \FALSE
              \ENDIF
           \ELSE
              %eval nested
              \IF{$O(tp) \in  S_{star}(Q_{starT_i})$}
                 \IF{\NOT $subsums_{\mathrm{graph star}}(Q_{star_{O(tp)}} \in Q_{starT_i}, Q_{starT_i}, Q_s, Eval_{star})$}
+                  \STATE $Eval_{star} \gets Eval_{star} \cup M(S_{star}(Q_{star})) \mapsto \mathrm{false}$
                    \RETURN \FALSE
                 \ENDIF
              \ENDIF
@@ -36,7 +38,7 @@
           \ENDIF
        \ENDFOR
  
-       \STATE $Eval_{star} \gets Eval_{star} \cup S_{star}(Q_{star})$
+       \STATE $Eval_{star} \gets Eval_{star} \cup M(S_{star}(Q_{star})) \mapsto \mathrm{true}$
        \RETURN \TRUE
     \end{algorithmic}
  \end{algorithm}
@@ -51,5 +53,8 @@
  The $q_{us} \in Q_{sunions}$ cannot have a UGP, this it will always be of the form $Q_s = Q_{sbody}$, thus in the worst case
  the $tp$ will match and $O(tp) \in  S_{star}(Q_{starT_i})$ is true.
  This result in a recursive call of the function a different $Q_{star} \in Q_{starT_i}$, resulting in a 
- complexity for this fragment of $O((n_{Q_{sunion}} \times n_{tp_{ Q_{star}}})^2)$.
- However
+ complexity for this fragment of $O(n_{Q_{sunion}} \times ( n_{tp_{ Q_{star_1}}} \times n_{tp_{ Q_{star_2}}} ... \times n_{tp_{ Q_{star_n}}}))$.
+ Given $n$  $Q_{star} \in Q_{starT_i}$.
+ However this complexity does not consider the set of mapping of $Eval_{star}$.
+ Since each return statement can be said to cache the result of each evaluation of a
+ $Q_{star}$ with a $Q_s$, it is not possible for a $Q_star$ to be evaluated more than one time.
