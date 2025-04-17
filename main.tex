@@ -1,0 +1,30 @@
+\documentclass{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\title{Time Complexity Analysis of the Query-Shape Subsumtion Algorithm from "Traveling with a Map: Reducing the Search Space of Link Traversal Queries Using RDF Shapes"}
+\author{Tam, Bryan-Elliott \\
+    \texttt{bryanelliott.tam@ugent.be}
+    \and 
+    Taelman, Ruben \\
+    \texttt{ruben.taelman@ugent.be}
+    \and
+    Colpaert, Pieter \\
+    \texttt{pieter.colpaert@ugent.be}
+}
+
+\begin{document}
+\maketitle
+
+This document assumes the reader is familiar with the paper \textit{Traveling with a Map: Reducing the Search Space of Link Traversal Queries Using RDF Shapes} (by the same authors) and its terminology.
+It extends that work by presenting the time complexity of the algorithm $subsums_{\mathrm{graph\ star}}$ described in the paper.
+Additionally, it introduces the algorithm $subsums_{\mathrm{Q}}$, which performs query-shape subsumption over an entire query, and presents its time complexity as well.
+
+\input{time_complexity}
+\end{document}

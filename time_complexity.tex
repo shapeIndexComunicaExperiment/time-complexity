@@ -1,0 +1,44 @@
+\section{Time complexity $subsums_{\mathrm{graph star}}$ algorithm}
+
+
+\begin{algorithm}[h]
+    \caption{Check if a GSP subsumes a $Q_s$ ($subsums_{\mathrm{graph star}}$)}\label{alg:containmentTree}
+    \begin{algorithmic}
+       \algsetup{linenosize=\tiny}
+       \scriptsize
+ 
+       \REQUIRE  $Q_{star}$, $Q_{starT_i}$, $Q_s = Q_{s\mathrm{body}} \cup Q_{s\mathrm{unions}}$ and $Eval_{star}$
+       \ENSURE \TRUE $ $ or \FALSE $ $ whether the root of a graph star pattern $Q_{star}$ is contained in the shape.
+ 
+       \IF{$S_{star}(Q_{star}) \in Eval_{star}$}
+          \RETURN \TRUE
+       \ENDIF 
+ 
+       \FORALL{$tp \in Q_{star}$} % O(n_star)
+          \IF{\NOT $match(tp, Q_{s\mathrm{body}})$}
+             \STATE $hasOnePath \gets $ \FALSE
+             \FORALL{$q_{us} \in Q_{s\mathrm{unions}}$}
+                \IF{$subsums_{\mathrm{graph star}}(Q_{star}, Q_{starT_i}, q_{us}, Eval_{star})$}
+                   \STATE $hasOnePath \gets $ \TRUE
+                \ENDIF
+             \ENDFOR
+             \IF{\NOT $hasOnePath$}
+                \RETURN \FALSE
+             \ENDIF
+          \ELSE
+             %eval nested
+             \IF{$O(tp) \in  S_{star}(Q_{starT_i})$}
+                \IF{\NOT $subsums_{\mathrm{graph star}}(Q_{star_{O(tp)}} \in Q_{starT_i}, Q_{starT_i}, Q_s, Eval_{star})$}
+                   \RETURN \FALSE
+                \ENDIF
+             \ENDIF
+             %
+          \ENDIF
+       \ENDFOR
+ 
+       \STATE $Eval_{star} \gets Eval_{star} \cup S_{star}(Q_{star})$
+       \RETURN \TRUE
+    \end{algorithmic}
+ \end{algorithm}
+
+ In the worst case each object of $Q_{star}$ will refer to a partial GSP in $Q_{starT_i}$ and each 
