@@ -8,8 +8,8 @@
         \ENSURE \TRUE $ $ or \FALSE $ $ whether the root of a graph star pattern $Q$ subsumes a shape.
 
         \FORALL{$Q_{starG_s} \in Q$}
-            \FORALL{$Q_{star} \in Q_{starG_s}$}
-                \IF{$subsums_{\mathrm{graph star}}(Q_{star}, Q_{starG_s}, \emptyset)$}
+            \FORALL{$Q_{star_s} \in Q_{starG_s}$}
+                \IF{$subsums_{\mathrm{graph star}}(Q_{star_s}, Q_{starG_s}, \emptyset)$}
                     \RETURN \TRUE
                 \ENDIF
             \ENDFOR
