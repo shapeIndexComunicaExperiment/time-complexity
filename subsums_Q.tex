@@ -1,0 +1,19 @@
+\begin{algorithm}[h]
+    \caption{Check if a query $Q$ subsumes a $Q_s$ ($subsums_{\mathrm{Q}}$)}\label{alg:containmentQuery}
+    \begin{algorithmic}
+        \algsetup{linenosize=\tiny}
+        \scriptsize
+
+        \REQUIRE  $Q$, $Q_s$ and $Eval_{star}$
+        \ENSURE \TRUE $ $ or \FALSE $ $ whether the root of a graph star pattern $Q$ subsumes a shape.
+
+        \FORALL{$Q_{starG_s} \in Q$}
+            \FORALL{$Q_{star} \in Q_{starG_s}$}
+                \IF{$subsums_{\mathrm{graph star}}(Q_{star}, Q_{starG_s}, \emptyset)$}
+                    \RETURN \TRUE
+                \ENDIF
+            \ENDFOR
+        \ENDFOR
+        \RETURN \FALSE
+    \end{algorithmic}
+\end{algorithm}
