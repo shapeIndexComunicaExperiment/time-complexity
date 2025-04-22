@@ -4,20 +4,27 @@
 \usepackage{algorithm}
 \usepackage{algorithmic}
 
+\newif\ifanonymous
+\anonymoustrue
 
 \renewcommand{\algorithmicrequire}{\textbf{Input:}}
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
 
 \title{Time Complexity Analysis of the Query-Shape Subsumtion Algorithm from "Traveling with a Map: Reducing the Search Space of Link Traversal Queries Using RDF Shapes"}
-\author{Tam, Bryan-Elliott \\
-    \texttt{bryanelliott.tam@ugent.be}
-    \and 
-    Taelman, Ruben \\
-    \texttt{ruben.taelman@ugent.be}
-    \and
-    Colpaert, Pieter \\
-    \texttt{pieter.colpaert@ugent.be}
-}
+
+\ifanonymous
+    \author{Anonymous}
+\else
+    \author{Tam, Bryan-Elliott \\
+        \texttt{bryanelliott.tam@ugent.be}
+        \and 
+        Taelman, Ruben \\
+        \texttt{ruben.taelman@ugent.be}
+        \and
+        Colpaert, Pieter \\
+        \texttt{pieter.colpaert@ugent.be}
+    }
+\fi
 
 \begin{document}
 \maketitle
