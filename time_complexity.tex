@@ -10,7 +10,7 @@ O(n_{sunion} \cdot n_{tp}),
 where $n_{sunion}$ is the number of union branches in the query $Q_s$ and $n_{tp}$ is the total number of triple patterns in the input graph star pattern $Q_{starG_i}$.
 
 \paragraph{Preliminaries}
-We assume that the \texttt{match} function operates in constant time, returning \texttt{true} if and only if the domain of matched triples for the second argument's triple pattern is a superset of that of the first argument, that is, if the second pattern is as general as or more general than the first.
+We assume that the \texttt{match} function operates in constant time, returning \texttt{true} if and only if the domain of matched triples of a triple pattern in the query is a superset of that of the first argument triple pattern, that is, if the second pattern is as general as or more general than the first.
 
 \paragraph{Worst-case per $Q_{star}$}
 Let $n_{qstar}$ denote the number of distinct $Q_{star} \in Q_{starG_i}$.
