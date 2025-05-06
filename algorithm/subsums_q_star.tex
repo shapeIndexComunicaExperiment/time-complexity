@@ -1,10 +1,10 @@
 \begin{algorithm}[h]
     \caption{Check if a GSP subsumes a $Q_s$ ($subsums_{\mathrm{graph star}}$)}\label{alg:containmentTree}
-    \begin{algorithmic}
+    \begin{algorithmic}[1]
        \algsetup{linenosize=\tiny}
        \scriptsize
  
-       \REQUIRE  $Q_{star}$, $Q_{starG_i}$, $Q_s = Q_{s\mathrm{body}} \cup Q_{s\mathrm{unions}}$ and $Eval_{star}$
+       \REQUIRE  $Q_{star}$, $Q_{starG_i}$, $Q_s = Q_{s\mathrm{body}} \cup Q_{s\mathrm{unions}}$, $Eval_{star}$
        \ENSURE \TRUE $ $ or \FALSE $ $ whether the root of a graph star pattern $Q_{star}$ subsumes a shape.
  
        \IF{$M(S_{star}(Q_{star})) \in Eval_{star}$}
@@ -26,6 +26,7 @@
           \ELSE
              %eval nested
              \IF{$O(tp) \in  S_{star}(Q_{starG_i})$}
+               \STATE $Eval_{star} \gets Eval_{star} \cup M(S_{star}(Q_{star})) \mapsto \mathrm{true}$
                 \IF{\NOT $subsums_{\mathrm{graph star}}(Q_{star_{O(tp)}} \in Q_{starG_i}, Q_{starG_i}, Q_s, Eval_{star})$}
                   \STATE $Eval_{star} \gets Eval_{star} \cup M(S_{star}(Q_{star})) \mapsto \mathrm{false}$
                    \RETURN \FALSE
@@ -35,7 +36,7 @@
           \ENDIF
        \ENDFOR
  
-       \STATE $Eval_{star} \gets Eval_{star} \cup M(S_{star}(Q_{star})) \mapsto \mathrm{true}$
+       %\STATE $Eval_{star} \gets Eval_{star} \cup M(S_{star}(Q_{star})) \mapsto \mathrm{true}$
        \RETURN \TRUE
     \end{algorithmic}
  \end{algorithm}
