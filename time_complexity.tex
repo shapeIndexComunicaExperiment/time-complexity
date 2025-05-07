@@ -5,7 +5,7 @@
 
 We aim to prove that the algorithm $subsums_{\mathrm{graph star}}$ terminates in polynomial time and, more precisely, that its time complexity is
 \begin{equation}
-O(n_{sunion} \cdot n_{tp}^{2}),
+O\left(n_{sunion} \cdot n_{tp}^{2}\right),
 \end{equation}
 where $n_{sunion}$ is the number of union branches in the query $Q_s$ and $n_{tp}$ is the total number of triple patterns in the input graph star pattern $Q_{starG_i}$.
 
@@ -45,11 +45,11 @@ O\left(n_{sunion} \cdot \sum_{i=1}^{n_{qstar}} n_{tp_{Q_{star_i}}}^{2}\right)
 $$
 
 $$
-O(n_{sunion} \cdot (n_{tp}^{2} - \sum_{i=1, j=1}^{n_{qstar}}  n_{tp_{Q_{star_i}}} \cdot  n_{tp_{Q_{star_j}}})) 
+O\left(n_{sunion} \cdot \left(n_{tp}^{2} - \sum_{i=1, j=1}^{n_{qstar}}  n_{tp_{Q_{star_i}}} \cdot  n_{tp_{Q_{star_j}}}\right)\right)
 $$
 
 $$
-O(n_{sunion} \cdot n_{tp}^{2})
+O\left(n_{sunion} \cdot n_{tp}^{2}\right)
 $$
 
 \section{Time Complexity of the $subsums_{\mathrm{Q}}$ Algorithm}
@@ -58,7 +58,7 @@ $$
 
 The time complexity of the $subsums_{\mathrm{Q}}$ algorithm is straightforward to derive, as it consists of iterating over the Graph Pattern Structures (GPS) of the query and applying the $subsums_{\mathrm{graph star}}$ algorithm. Thus, the time complexity is given by:
 \begin{equation}
-O(n_{sunion} \cdot n_{tp_{max}}^{2} \cdot n_{Q_{star_{max}}} \cdot n_{Q_{starG}}),
+O\left(n_{sunion} \cdot n_{tp_{max}}^{2} \cdot n_{Q_{star_{max}}} \cdot n_{Q_{starG}}\right),
 \end{equation}
 
 Where, $n_{tp_{max}}$ is the maximum number of triple patterns in any $Q_{starG}$,
